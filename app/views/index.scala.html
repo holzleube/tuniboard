@@ -1,0 +1,48 @@
+@()
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>GC Tuniberg Clubmeisterschaften 2016</title>
+    <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("lib/bootstrap/css/bootstrap.css")" />
+    <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("lib/ng-table/ng-table.css")" />
+    @*-- Add More CSS here -- *@
+    <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/main.css")" />
+    <script data-main="@routes.Assets.versioned("javascripts/main.js")" type="text/javascript" src="@routes.Assets.versioned("lib/requirejs/require.js")"></script>
+</head>
+<body>
+@*-- Header -- *@
+<header class="navbar navbar-inverse navbar-fixed-top basics-nav" data-ng-cloak>
+    <div class="container" data-ng-switch="!!user" data-ng-cloak>
+        <a href="#/" class="navbar-brand">Play-Angular Seed</a>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <img class="navbar-brand" src="@routes.Assets.versioned("images/logo.png")"/>
+                    <p class="navbar-brand">GC Tuniberg</p>
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li><a href="#/all">Alle</a></li>
+                        <li><a href="#/aktive">Aktive</a></li>
+                        <li><a href="#/AK35">AK35</a></li>
+                        <li><a href="#/AK50">AK50</a></li>
+                    </ul>
+                </div>
+                <!--/.nav-collapse -->
+            </div>
+        </div>
+    </div>
+</header>
+@* -- Main Content -- *@
+<div class="container" data-ng-cloak>
+    <div data-ng-view></div>
+</div>
+@*-- Footer -- *@
+<footer data-ng-controller="FooterCtrl">
+</footer>
+</body>
+</html>
