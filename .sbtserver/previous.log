@@ -1,5 +1,5 @@
-New log file opened at Sun Aug 28 20:28:28 CEST 2016 by 6504@DESKTOP-VQGB3GE
-jvm 6504@DESKTOP-VQGB3GE
+New log file opened at Mon Aug 29 21:45:50 CEST 2016 by 8884@DESKTOP-VQGB3GE
+jvm 8884@DESKTOP-VQGB3GE
 jvm vmName=Java HotSpot(TM) 64-Bit Server VM vmVendor=Oracle Corporation vmVersion=25.102-b14
 jvm specName=Java Virtual Machine Specification specVendor=Oracle Corporation specVersion=1.8
 jvm arguments: [-Xms256m, -Xmx1024m, -XX:MetaspaceSize=64m, -XX:MaxMetaspaceSize=256m]
@@ -27,7 +27,7 @@ sorting: ns: List(sbt.plugins.CorePlugin, sbt.plugins.IvyPlugin, sbt.plugins.Jvm
   :: sorted deduced result: List(sbt.plugins.CorePlugin, sbt.plugins.IvyPlugin, sbt.plugins.JvmPlugin, sbt.plugins.JUnitXmlReportPlugin)
 [Loading] Done in E:\Development\Projects\tuniboard\project, returning: (tuniboard-build)
 Loading project definition from E:\Development\Projects\tuniboard\project
-Running task... Cancel: sbt.TaskCancellationStrategy$Null$@729d5a32, check cycles: false
+Running task... Cancel: sbt.TaskCancellationStrategy$Null$@1e5e4ac4, check cycles: false
 
 Initial source changes: 
 	removed:Set()
@@ -73,4 +73,4 @@ Waiting for socket thread
 Waiting for request processor thread
 Waiting for command engine result
 Returning control to sbt launcher with result Exit(0)
-Closing the 6504@DESKTOP-VQGB3GE logs at Sun Aug 28 20:28:31 CEST 2016, goodbye.
+Closing the 8884@DESKTOP-VQGB3GE logs at Mon Aug 29 21:45:55 CEST 2016, goodbye.

@@ -3,11 +3,12 @@
 # ~~~~
 
 GET   /                                            controllers.Reports.index
-GET   /jsroutes.js                                 controllers.Reports.jsRoutes()
+#GET   /jsroutes.js                                 controllers.Reports.jsRoutes()
+GET   /jsroutes.js                                 controllers.Player.jsRoutes()
 
 # Report routes
 GET   /reports                                     controllers.Reports.reports(offset:Int ?= 0, limit:Int ?= 25, fromDate: Option[String], toDate: Option[String], world: Option[String], field: Option[String], sort: Option[String])
-GET   /aktive                                     	controllers.Player.players
+GET   /actives                                      controllers.Player.players
 GET   /reports/worldsList                          controllers.Reports.worldsList
 
 # Map static resources from the /public folder to the /assets URL path 

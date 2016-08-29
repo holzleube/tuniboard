@@ -14,19 +14,20 @@ object Player extends Controller {
   /**
    * Method return rows from DB for reports with specified limit, and filters like from date, to date, which world and how to sort
    */
-  def players() = Action { implicit request =>
+  def players(discipline: String, sex: Int) = Action { implicit request =>
 
     implicit val playerEntryWrites = Json.writes[PlayerEntity]
     Ok(Json.obj(
-        "rows" -> Json.toJson(PlayerModel.getPlayers())
+        "rows" -> Json.toJson(PlayerModel.getPlayers(discipline, sex))
         )
      )
   }
 
 
-//  def jsRoutes(varName: String = "jsRoutes") = Action { implicit request =>
-//    Ok(Routes.javascriptRouter(varName)(
-//      routes.javascript
-//    )).as(JAVASCRIPT)
-//  }
+  def jsRoutes(varName: String = "jsRoutes") = Action { implicit request =>
+    Ok(Routes.javascriptRouter(varName)(
+      routes.javascript.Player.players,
+      routes.javascript.Reports.reports
+    )).as(JAVASCRIPT)
+  }
 }

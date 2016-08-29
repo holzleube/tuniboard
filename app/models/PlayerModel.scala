@@ -15,7 +15,7 @@ object PlayerModel {
 
   type Q = Query[Player, PlayerEntity, Seq]
   
-  def getPlayers()  = DB.withSession { implicit session => player.run }
+  def getPlayers(discipline: String, sex: Int)  = DB.withSession { implicit session => player.run }
 
 
   private[this] def getReportSortField(rep: Player, field: Option[String], sort: Option[String]) = field.map {
