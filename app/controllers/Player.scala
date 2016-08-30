@@ -22,12 +22,12 @@ object Player extends Controller {
         )
      )
   }
-
-
+  
   def jsRoutes(varName: String = "jsRoutes") = Action { implicit request =>
     Ok(Routes.javascriptRouter(varName)(
       routes.javascript.Player.players,
-      routes.javascript.Reports.reports
+      routes.javascript.Reports.reports,
+      routes.javascript.Reports.worldsList
     )).as(JAVASCRIPT)
   }
 }

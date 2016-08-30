@@ -15,8 +15,14 @@ object PlayerModel {
 
   type Q = Query[Player, PlayerEntity, Seq]
   
-  def getPlayers(discipline: String, sex: Int)  = DB.withSession { implicit session => player.run }
+  def getPlayers(discipline: String, sex: Int)  = DB.withSession { implicit session =>player.filter(_.sex===sex)
+    .filter(_.discipline===discipline).run }
 
+  private[this] def getFilteredQuery(discipline: Option[String], sex: Option[Int]) =
+    Seq(
+      filterRowBased[String, String](discipline, { case (row, w) => row.discipline === "AK35" }) _,
+      filterRowBased[Int, String](sex, { case (row, w) => row.sex === 0 }) _
+    ).foldLeft(player.asInstanceOf[Q]) { case (query, filter) => filter(query) }
 
   private[this] def getReportSortField(rep: Player, field: Option[String], sort: Option[String]) = field.map {
       case "firstName" => rep.firstName

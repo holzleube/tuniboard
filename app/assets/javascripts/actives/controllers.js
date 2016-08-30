@@ -1,8 +1,6 @@
 define([], function() {
     'use strict';
     var PlayerCtrl = function($scope, $filter, playRoutes, ngTableParams) {
-//        $scope.players = [];
-//        $scope.player = '';
 
 
         $scope.open = function($event, flag) {
@@ -20,7 +18,7 @@ define([], function() {
             sorting: { complete: 'desc' }
         }, {
             getData: function($defer) {
-                playRoutes.controllers.Player.players().get().then(function(response) {
+                playRoutes.controllers.Player.players('Aktive',0).get().then(function(response) {
                     $defer.resolve(response.data.rows);
                 });
             }
@@ -32,7 +30,7 @@ define([], function() {
             sorting: { complete: 'desc' }
         }, {
             getData: function($defer) {
-                playRoutes.controllers.Player.players().get().then(function(response) {
+                playRoutes.controllers.Player.players('Aktive',1).get().then(function(response) {
                     $defer.resolve(response.data.rows);
                 });
             }

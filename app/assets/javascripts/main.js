@@ -5,7 +5,7 @@
     // -- RequireJS config --
     requirejs.config({
         // Packages = top-level folders; loads a contained file named 'main.js"
-        packages: ['common', 'home', 'report', 'actives'],
+        packages: ['common', 'home', 'all', 'actives', 'ak35', 'ak50', 'ak65'],
         shim: {
             'jsRoutes': {
                 deps: [],
