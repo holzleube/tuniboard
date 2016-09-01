@@ -11,7 +11,7 @@ object PlayerDatabase {
 }
 
 case class PlayerEntity(id: Int, firstName: String, lastName: String, discipline: String, sex: Int, firstRound: Int, secondRound: Int,
-    thirdRound: Int, currentHole: Int)
+    thirdRound: Int, currentHole: Int, currentResult: Int)
 
 class Player(tag: Tag) extends Table[PlayerEntity](tag, "player") {
   def id = column[Int]("id",O.PrimaryKey, O.AutoInc)
@@ -23,6 +23,7 @@ class Player(tag: Tag) extends Table[PlayerEntity](tag, "player") {
   def secondRound = column[Int]("secondRound", O.DBType("Int"))
   def thirdRound = column[Int]("thirdRound", O.DBType("Int"))
   def currentHole = column[Int]("currentHole", O.DBType("Int"))
-  def * = (id, firstName, lastName, discipline, sex, firstRound, secondRound, thirdRound, currentHole) <> (PlayerEntity.tupled, PlayerEntity.unapply _)
+  def currentResult = column[Int]("currentResult", O.DBType("Int"))
+  def * = (id, firstName, lastName, discipline, sex, firstRound, secondRound, thirdRound, currentHole, currentResult) <> (PlayerEntity.tupled, PlayerEntity.unapply _)
 }
 

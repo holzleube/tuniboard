@@ -10,6 +10,7 @@ GET   /jsroutes.js                                 controllers.Player.jsRoutes()
 GET   /reports                                     	controllers.Reports.reports(offset:Int ?= 0, limit:Int ?= 25, fromDate: Option[String], toDate: Option[String], world: Option[String], field: Option[String], sort: Option[String])
 GET   /actives                                      controllers.Player.players(discipline:String, sex:Int)
 GET   /ak35                                      	controllers.Player.players(discipline:String, sex:Int)
+GET   /player                                      	controllers.Player.updateScore(playerId: Int, currentResult: Int, currentHole: Int)
 GET   /reports/worldsList                          	controllers.Reports.worldsList
 
 # Map static resources from the /public folder to the /assets URL path 

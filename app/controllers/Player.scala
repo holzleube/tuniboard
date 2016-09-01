@@ -23,6 +23,13 @@ object Player extends Controller {
      )
   }
   
+  def updateScore(playerId: Int, currentResult: Int, currentHole: Int) = Action { implicit request =>
+    implicit val playerEntryWrites = Json.writes[PlayerEntity]
+    Ok(Json.obj(
+        "updatedId" -> Json.toJson(PlayerModel.updatePlayer(playerId, currentResult, currentHole))
+        ))
+  }
+  
   def jsRoutes(varName: String = "jsRoutes") = Action { implicit request =>
     Ok(Routes.javascriptRouter(varName)(
       routes.javascript.Player.players,
