@@ -10,6 +10,9 @@ define(['angular', './controllers', 'common', 'ui-bootstrap', 'ng-table'], funct
         $routeProvider.when('/all', {
             templateUrl: '/assets/javascripts/all/all.html',
             controller: controllers.AllCtrl
-});
+        }).when('/', {
+            templateUrl: '/assets/javascripts/all/all.html',
+            controller: controllers.AllCtrl
+        });
     }]);
 });
