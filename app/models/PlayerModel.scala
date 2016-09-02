@@ -15,11 +15,14 @@ object PlayerModel {
 
   type Q = Query[Player, PlayerEntity, Seq]
   
-  def getPlayers(discipline: String, sex: Int)  = DB.withSession { implicit session =>player.filter(_.sex===sex)
-    .filter(_.discipline===discipline).sortBy(_.currentResult.asc).run }
+		  def getPlayers(discipline: String, sex: Int)  = DB.withSession { implicit session =>player.filter(_.sex===sex)
+		  .filter(_.discipline===discipline).sortBy(_.currentResult.asc).run }
   
-  def updatePlayer(playerId: Int, currentResult: Int, currentHole: Int) = DB.withSession{
-    implicit session => player.filter(_.id===playerId).map(s=>(s.currentResult, s.currentHole)).update(currentResult, currentHole)
+  def getAllPlayers(sex: Int)  = DB.withSession { implicit session =>player.filter(_.sex===sex)
+    .sortBy(_.currentResult.asc).run }
+  
+  def updatePlayer(playerId: Int, currentResult: Int, currentHole: Int,currentRound:Int) = DB.withSession{
+    implicit session => player.filter(_.id===playerId).map(s=>(s.currentResult, s.currentHole, s.firstRound)).update(currentResult, currentHole, currentRound)
   }
 
   private[this] def getReportSortField(rep: Player, field: Option[String], sort: Option[String]) = field.map {
