@@ -18,13 +18,29 @@ define([], function() {
                 }
             });
         };
-        var setValuesOnScope = function(scope, active, ak35, ak50, ak65){
+        var getAllTableParams = function(sex){
+            return new ngTableParams({
+                page: 1,
+                count: 50,
+                sorting: { complete: 'desc' }
+            }, {
+                getData: function($defer) {
+                    playRoutes.controllers.Player.complete(sex).get().then(function(response) {
+                        $defer.resolve(response.data.rows);
+                    });
+                }
+            });
+        };
+        var setValuesOnScope = function(scope, all, active, ak35, ak50, ak65){
+            $scope.showAll = all;
             $scope.showActive = active;
             $scope.showAk35 = ak35;
             $scope.showAk50 = ak50;
             $scope.showAk65 = ak65;
         };
         setValuesOnScope($scope, true, false, false, false);
+        $scope.allLady = getAllTableParams(0);
+        $scope.allMen = getAllTableParams(1);
         $scope.activesLady = getTableParams('Aktive',0);
         $scope.activesMen = getTableParams('Aktive',1);
         $scope.ak35Lady = getTableParams('Ak35',0);
@@ -37,31 +53,39 @@ define([], function() {
         var refreshTable =  function(){
             console.log(currentIndex);
             if(currentIndex === 0){
-                setValuesOnScope(myScope, true, false, false, false);
+                setValuesOnScope(myScope, false, false, false, true, false);
+                myScope.allLady.reload();
+                myScope.allMen.reload();
+                currentIndex ++;
+                startTimer();
+                return;
+            }
+            if(currentIndex === 1){
+                setValuesOnScope(myScope, true, false, false, false, false);
                 myScope.activesLady.reload();
                 myScope.activesMen.reload();
                 currentIndex++;
                 startTimer();
                 return;
             }
-            if(currentIndex === 1){
-                setValuesOnScope(myScope, false, true, false, false);
+            if(currentIndex === 2){
+                setValuesOnScope(myScope, false, true, false, false, false);
                 myScope.ak35Lady.reload();
                 myScope.ak35Men.reload();
                 currentIndex++;
                 startTimer();
                 return;
             }
-            if(currentIndex === 2){
-                setValuesOnScope(myScope, false, false, true, false);
+            if(currentIndex === 3){
+                setValuesOnScope(myScope, false, false, true, false, false);
                 myScope.ak50Lady.reload();
                 myScope.ak50Men.reload();
                 currentIndex++;
                 startTimer();
                 return;
             }
-            if(currentIndex === 3){
-                setValuesOnScope(myScope, false, false, false, true);
+            if(currentIndex === 4){
+                setValuesOnScope(myScope, false, false, false, false, true);
                 myScope.ak65Lady.reload();
                 myScope.ak65Men.reload();
                 currentIndex = 0;

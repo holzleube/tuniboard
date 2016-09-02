@@ -15,7 +15,7 @@ object PlayerModel {
 
   type Q = Query[Player, PlayerEntity, Seq]
   
-		  def getPlayers(discipline: String, sex: Int)  = DB.withSession { implicit session =>player.filter(_.sex===sex)
+		  def getPlayers(discipline: String, sex: Int)  = DB.withSession { implicit session =>player.filter(_.sex===sex).filter(_.currentHole>1)
 		  .filter(_.discipline===discipline).sortBy(_.currentResult.asc).run }
   
   def getAllPlayers(sex: Int)  = DB.withSession { implicit session =>player.filter(_.sex===sex)

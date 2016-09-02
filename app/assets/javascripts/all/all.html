@@ -3,6 +3,45 @@
 </div>
 
 <div class="row">&nbsp;</div>
+<div class="row" id="row-1" ng-show="showAll">
+	<div class="col-md-5">
+	<h2>Damen Gesamt</h2>
+		<div loading-container="allLady.settings().$loading" class="row">
+		    <table ng-table="allLady" class="table table-striped table-hover table-bordered">
+		        <tr ng-repeat="result in $data">
+		            <td data-title="'Pos.'"  class="text-center">{{$index + 1}}</td>
+		            <td data-title="'Vorname'"  class="text-center">{{result.firstName}}</td>
+		            <td data-title="'Nachname'"  class="text-center">{{result.lastName}}</td>
+		            <td data-title="'Loch'"  class="text-center">{{result.currentHole}}</td>
+		            <!-- <td data-title="'Konkurrenz'"  class="text-center">{{result.discipline}}</td>
+		            <td data-title="'1.Runde'"  class="text-center">{{result.firstRound}}</td>
+		            <td data-title="'2.Runde'"  class="text-center">{{result.secondRound}}</td>
+		            <td data-title="'3.Runde'"  class="text-center">{{result.thirdRound}}</td> -->
+		            <td data-title="'Gesamt'" sortable="'complete'" class="text-center">{{result.firstRound + result.secondRound + result.thirdRound}}</td>
+		        </tr>
+		    </table>
+		</div>
+	</div>
+	<div class="col-md-1"></div>
+	<div class="col-md-5">
+		<h2>Herren Gesamt</h2>
+		<div loading-container="allMen.settings().$loading" class="row">
+		    <table ng-table="allMen" class="table table-striped table-hover table-bordered">
+		        <tr ng-repeat="result in $data">
+		            <td data-title="'Pos.'"  class="text-center">{{$index + 1}}</td>
+		            <td data-title="'Vorname'"  class="text-center">{{result.firstName}}</td>
+		            <td data-title="'Nachname'"  class="text-center">{{result.lastName}}</td>
+		            <td data-title="'Loch'"  class="text-center">{{result.currentHole}}</td>
+		            <!-- <td data-title="'Konkurrenz'"  class="text-center">{{result.discipline}}</td>
+		            <td data-title="'1.Runde'"  class="text-center">{{result.firstRound}}</td>
+		            <td data-title="'2.Runde'"  class="text-center">{{result.secondRound}}</td>
+		            <td data-title="'3.Runde'"  class="text-center">{{result.thirdRound}}</td> -->
+		            <td data-title="'Gesamt'" sortable="'complete'" class="text-center">{{result.firstRound + result.secondRound + result.thirdRound}}</td>
+		        </tr>
+		    </table>
+		</div>
+	</div>
+</div>
 <div class="row" id="row-1" ng-show="showActive">
 	<div class="col-md-5">
 	<h2>Damen</h2>
